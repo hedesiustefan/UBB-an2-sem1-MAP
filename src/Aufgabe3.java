@@ -8,6 +8,8 @@ public class Aufgabe3 {
         System.out.println(Arrays.toString(bigSum(firstArray, secondArray)));
         //Unterpunkt 2
         System.out.println(Arrays.toString(bigDiff(firstArray, secondArray)));
+        //UNterpunkt 3
+        System.out.println(Arrays.toString(bigMultiplication(firstArray, 3)));
 
     }
 
@@ -52,12 +54,33 @@ public class Aufgabe3 {
         }
 
         if (leadingZeroCount == firstArray.length) {
-            return new int[] {0};
+            return new int[]{0};
         }
 
         int[] trimmedResult = new int[firstArray.length - leadingZeroCount];
         System.arraycopy(resultArray, leadingZeroCount, trimmedResult, 0, firstArray.length - leadingZeroCount);
 
         return trimmedResult;
+    }
+
+    public static int[] bigMultiplication(int[] array, int multiplier) {
+        int carry = 0;
+        int[] resultArray = new int[array.length + 1];
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            int multiplied = array[i] * multiplier + carry;
+            resultArray[i + 1] = multiplied % 10;
+            carry = multiplied / 10;
+        }
+
+        resultArray[0] = carry;
+
+        if (resultArray[0] == 0) {
+            int[] trimmedResult = new int[array.length];
+            System.arraycopy(resultArray, 1, trimmedResult, 0, array.length);
+            return trimmedResult;
+        } else {
+            return resultArray;
+        }
     }
 }

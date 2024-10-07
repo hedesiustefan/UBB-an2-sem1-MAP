@@ -9,6 +9,8 @@ public class Aufgabe1 {
         System.out.println(gradeAverage(grades));
         //Unterpunkt3
         System.out.println(Arrays.toString(roundGrades(grades)));
+        //Unterpunkt4
+        System.out.println(biggestRoundedGrade(grades));
     }
 
     public static int[] failingGrades(int[] grades) {
@@ -48,5 +50,16 @@ public class Aufgabe1 {
             }
         }
         return roundedGrades;
+    }
+
+    public static int biggestRoundedGrade(int[] grades) {
+        int biggestGrade = 0;
+        int[] roundedGrades = roundGrades(grades);
+        for (int grade : roundedGrades) {
+            if (grade > biggestGrade) {
+                biggestGrade = grade;
+            }
+        }
+        return biggestGrade;
     }
 }

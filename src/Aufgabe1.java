@@ -2,8 +2,11 @@ import java.util.Arrays;
 
 public class Aufgabe1 {
     public static void main(String[] args) {
+        int[] grades = {37, 39, 89, 12, 75};
         //Unterpunkt 1
-        System.out.println(Arrays.toString(failingGrades(new int[]{37, 39, 89, 12, 75})));
+        System.out.println(Arrays.toString(failingGrades(grades)));
+        //UNterpunkt2
+        System.out.println(gradeAverage(grades));
     }
 
     public static int[] failingGrades(int[] grades) {
@@ -23,5 +26,13 @@ public class Aufgabe1 {
             }
         }
         return failingGrades;
+    }
+
+    public static int gradeAverage(int[] grades) {
+        int sum = 0;
+        for (int grade : grades) {
+            sum += grade;
+        }
+        return sum / grades.length;
     }
 }

@@ -6,6 +6,8 @@ public class Aufgabe3 {
         int[] secondArray = {3, 2, 9, 0, 0, 0, 0, 0};
         //Unterpunkt 1
         System.out.println(Arrays.toString(bigSum(firstArray, secondArray)));
+        //Unterpunkt 2
+        System.out.println(Arrays.toString(bigDiff(firstArray, secondArray)));
 
     }
 
@@ -30,4 +32,32 @@ public class Aufgabe3 {
         }
     }
 
+    public static int[] bigDiff(int[] firstArray, int[] secondArray) {
+        int borrow = 0;
+        int[] resultArray = new int[firstArray.length];
+        for (int i = firstArray.length - 1; i >= 0; i--) {
+            int diff = firstArray[i] - secondArray[i] - borrow;
+            if (diff < 0) {
+                diff += 10;
+                borrow = 1;
+            } else {
+                borrow = 0;
+            }
+
+            resultArray[i] = diff;
+        }
+        int leadingZeroCount = 0;
+        while (leadingZeroCount < firstArray.length && resultArray[leadingZeroCount] == 0) {
+            leadingZeroCount++;
+        }
+
+        if (leadingZeroCount == firstArray.length) {
+            return new int[] {0};
+        }
+
+        int[] trimmedResult = new int[firstArray.length - leadingZeroCount];
+        System.arraycopy(resultArray, leadingZeroCount, trimmedResult, 0, firstArray.length - leadingZeroCount);
+
+        return trimmedResult;
+    }
 }

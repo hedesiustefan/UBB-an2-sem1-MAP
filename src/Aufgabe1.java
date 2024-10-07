@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Aufgabe1 {
     public static void main(String[] args) {
-        int[] grades = {37, 39, 89, 12, 75, 93, 7, 28};
+        int[] grades = {37, 39, 89, 12, 75, 93, 7, 28, 13};
         //Unterpunkt 1
         System.out.println(Arrays.toString(failingGrades(grades)));
         //Unterpunkt2
@@ -32,12 +32,12 @@ public class Aufgabe1 {
         return failingGrades;
     }
 
-    public static int gradeAverage(int[] grades) {
-        int sum = 0;
+    public static double gradeAverage(int[] grades) {
+        double sum = 0;
         for (int grade : grades) {
             sum += grade;
         }
-        return sum / grades.length;
+        return Math.round(sum / grades.length * 100.0) / 100.0;
     }
 
     public static int[] roundGrades(int[] grades) {

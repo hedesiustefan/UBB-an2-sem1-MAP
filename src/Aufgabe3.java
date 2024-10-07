@@ -8,8 +8,10 @@ public class Aufgabe3 {
         System.out.println(Arrays.toString(bigSum(firstArray, secondArray)));
         //Unterpunkt 2
         System.out.println(Arrays.toString(bigDiff(firstArray, secondArray)));
-        //UNterpunkt 3
+        //Unterpunkt 3
         System.out.println(Arrays.toString(bigMultiplication(firstArray, 3)));
+        //UNterpunkt 4
+        System.out.println(Arrays.toString(bigDivision(firstArray, 3)));
 
     }
 
@@ -82,5 +84,29 @@ public class Aufgabe3 {
         } else {
             return resultArray;
         }
+    }
+
+    public static int[] bigDivision(int[] array, int divisor) {
+        int remainder = 0;
+        int[] resultArray = new int[array.length];
+
+        for (int i = 0; i < array.length; i++) {
+            int current = remainder * 10 + array[i];
+            resultArray[i] = current / divisor;
+            remainder = current % divisor;
+        }
+
+        int leadingZeroCount = 0;
+        while (leadingZeroCount < resultArray.length && resultArray[leadingZeroCount] == 0) {
+            leadingZeroCount++;
+        }
+
+        if (leadingZeroCount == resultArray.length) {
+            return new int[] {0};
+        }
+
+        int[] trimmedResult = new int[resultArray.length - leadingZeroCount];
+        System.arraycopy(resultArray, leadingZeroCount, trimmedResult, 0, trimmedResult.length);
+        return trimmedResult;
     }
 }

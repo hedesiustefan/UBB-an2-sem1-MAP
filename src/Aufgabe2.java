@@ -3,6 +3,8 @@ public class Aufgabe2 {
         int[] numbers = {45, 12, 78, 36, 59, 23, 81, 7, 50, 91, 14, 67, 88, 32, 3, 62, 19, 96, 27, 41};
         //Unterpunkt 1
         System.out.println(maxNumber(numbers));
+        //UNterpunkt 2
+        System.out.println(minNumber(numbers));
     }
 
     public static int maxNumber(int[] numbers) {
@@ -13,5 +15,15 @@ public class Aufgabe2 {
             }
         }
         return max;
+    }
+
+    public static int minNumber(int[] numbers) {
+        int min = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
+            if (min > numbers[i]) {
+                min = numbers[i];
+            }
+        }
+        return min;
     }
 }

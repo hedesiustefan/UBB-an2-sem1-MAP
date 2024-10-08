@@ -3,17 +3,18 @@ public class Aufgabe4 {
         int[] keyboards = {5, 15, 20, 35, 50, 65, 40};
         int[] drives = {10, 75, 80, 30, 25, 10, 60};
         //unterpunkt 1
-        System.out.println("Most expensive keyboard is: " + cheapestKeyboard(keyboards));
+        System.out.println("Most cheap keyboard is: " + cheapestKeyboard(keyboards));
 
     }
 
-    public static int cheapestKeyboard(int[] keyboards){
-        int maxPrice = 0;
+    public static int cheapestKeyboard(int[] keyboards) {
+        int minPrice = 1000000;
         for (int keyboard : keyboards) {
-            if (keyboard > maxPrice) {
-                maxPrice = keyboard;
+            if (keyboard < minPrice) {
+                minPrice = keyboard;
             }
         }
-        return maxPrice;
+        return minPrice;
     }
+
 }
